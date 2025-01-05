@@ -6,7 +6,7 @@ body {
     background-color: #f8edeb;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #333;
     margin-top: 30px;
@@ -16,10 +16,11 @@ a {
     color: #008CBA;
     text-decoration: none;
     font-size: 16px;
-
 }
 
-
+a:hover {
+    opacity: 0.8;
+}
 
 /* Container for layout */
 .container {
@@ -59,7 +60,6 @@ th, td {
 th {
     background-color: #fb6f92;
     color: white;
-    
 }
 
 td {
@@ -81,9 +81,11 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
+    width: 30%;
+    margin: auto;
 }
 
-input[type="text"], input[type="number"], select, input[type="file"] {
+input[type="text"], input[type="password"], input[type="number"], select, input[type="file"] {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
@@ -96,6 +98,20 @@ input[type="submit"] {
     background-color: #28a745;
     color: white;
     font-size: 16px;
+}
+
+/* Error Message Styles */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Success Message Styles */
+.success {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 /* Responsive Design */
@@ -120,7 +136,7 @@ input[type="submit"] {
         margin: 0;
     }
 
-    h1 {
+    h1, h2 {
         font-size: 20px;
     }
 
@@ -138,6 +154,7 @@ input[type="submit"] {
         font-size: 12px;
     }
 }
+
 /* General Button Styles */
 a {
     text-decoration: none;
@@ -148,17 +165,19 @@ a {
     margin-right: 10px;
     text-align: center;
 }
+
 .edit {
     background-color: #ffcc00; /* Yellow color */
     color: white;
     padding: 14px;
     font-weight: bold;
-    
 }
+
 .edit:hover {
     background-color: #e5b200;
     color: white;
 }
+
 .delete {
     background-color: #ff4d4d; /* Red color */
     color: white;
@@ -171,10 +190,6 @@ a {
     color: white;
 }
 
-/* Optional: Styling for buttons when hovered */
-a:hover {
-    opacity: 0.8;
-}
 .create {
     background-color: #219ebc;
     color: white;
@@ -183,12 +198,13 @@ a:hover {
     padding: 16px;
     font-weight: bold;
 }
+
 .title {
-   background-color: #d81159;
-    color: white; 
+    background-color: #d81159;
+    color: white;
     padding: 20px;
     width: 90%;
-    margin:20px auto;
+    margin: 20px auto;
     border-radius: 5px;
     font-family: "Poppins", serif;
 }
