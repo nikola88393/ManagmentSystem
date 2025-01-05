@@ -1,6 +1,12 @@
 <?php
+session_start();
 require_once 'db/Database.php';
 require_once 'Item.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: auth/login.php");
+    exit;
+}
 
 $database = new Database();
 $db = $database->getConnection();
@@ -13,6 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     $item->Gender = $_POST['Gender'];
     $item->Quantity = $_POST['Quantity'];
     $item->Size = $_POST['Size'];
+    $item->user_id = $_SESSION['user_id'];
 
     // Handle image upload
     if (isset($_FILES['Image']) && $_FILES['Image']['error'] == 0) {
@@ -42,7 +49,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

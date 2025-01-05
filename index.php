@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: /ManagmentSystem/auth/login.php");
+    exit;
+}
+
 require_once 'db/Database.php';
 require_once 'Item.php';
 
@@ -6,8 +12,8 @@ $database = new Database();
 $db = $database->getConnection();
 $item = new Item($db);
 
-// Fetch all items from the database
-$items = $item->readAll();
+// Fetch all items for the logged-in user
+$items = $item->readAllByUser($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -20,13 +26,13 @@ $items = $item->readAll();
 </head>
 <body>
     <h1 class="title">Инвентар</h1>
+    <a class="create" href="create.php">Добави</a>
+    <a class="logout" href="auth/logout.php">Logout</a>
     
     <table border="1">
-    
         <thead>
-        <a class="create" href="create.php">Добави</a>
             <tr>
-               <th>Снимка</th>
+                <th>Снимка</th>
                 <th>Име</th>
                 <th>Цена</th>
                 <th>Пол</th>
@@ -49,10 +55,9 @@ $items = $item->readAll();
                 <td><?php echo $itemData['Gender']; ?></td>
                 <td><?php echo $itemData['Quantity'].' бр.'; ?></td>
                 <td><?php echo $itemData['Size']; ?></td>
-                
                 <td>
-                <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
-                <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Are you sure you want to delete this item?')">Изтрий</a>
+                    <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
+                    <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Are you sure you want to delete this item?')">Изтрий</a>
                 </td>
             </tr>
             <?php endforeach; ?>
