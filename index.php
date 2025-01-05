@@ -71,7 +71,7 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                 <td><?php echo !empty($itemData['ImageURL']) ? '<img src="' . $itemData['ImageURL'] . '" alt="Image" width="50">' : 'Няма снимка'; ?></td>
                 <td><?php echo $itemData['Name']; ?></td>
                 <td><?php echo $itemData['Price']." лв."; ?></td>
-                <td><?php echo $itemData['Gender']; ?></td>
+                <td><?php echo $itemData['Gender'] === "Men" ? 'Mъж' : 'Жена'; ?></td>
                 <td><?php echo $itemData['Quantity'].' бр.'; ?></td>
                 <td><?php echo $itemData['Size']; ?></td>
                 <td>
