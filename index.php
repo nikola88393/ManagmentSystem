@@ -30,15 +30,15 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
     <h1 class="title">Инвентар</h1>
     <div class="index-actions">
         <div class="item-options"> 
-        <a class="create" href="create.php">Добави</a>
-        <form method="get" class="filter-form">
-        <label for="gender">Филтрирай по пол:</label>
-        <select name="gender" id="gender" onchange="this.form.submit()">
-            <option value="">Всички</option>
-            <option value="Men" <?php if ($gender_filter == 'Men') echo 'selected'; ?>>Мъж</option>
-            <option value="Women" <?php if ($gender_filter == 'Women') echo 'selected'; ?>>Жена</option>
-        </select>
-        </form>
+            <a class="create" href="create.php">Добави</a>
+            <form method="get" class="filter-form">
+                <label for="gender">Филтрирай по пол:</label>
+                <select name="gender" id="gender" onchange="this.form.submit()">
+                    <option value="">Всички</option>
+                    <option value="Men" <?php if ($gender_filter == 'Men') echo 'selected'; ?>>Мъж</option>
+                    <option value="Women" <?php if ($gender_filter == 'Women') echo 'selected'; ?>>Жена</option>
+                </select>
+            </form>
         </div>
         <div class="user-info">
             <h3>Здравей, <?php echo $_SESSION['username']; ?>!</h3>
@@ -46,42 +46,33 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
         </div>
     </div>
 
-     
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Снимка</th>
-                <th>Име</th>
-                <th>Цена</th>
-                <th>Пол</th>
-                <th>Наличност</th>
-                <th>Размер</th>
-                <th>Опции</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (empty($items)): ?>
-            <tr>
-                <td colspan="7">Няма продукти</td>
-            </tr>
-            <?php else: ?>
+    <div class="items-container">
+        <?php if (empty($items)): ?>
+            <p>Няма продукти</p>
+        <?php else: ?>
             <?php foreach ($items as $itemData): ?>
-            <tr>
-                <td><?php echo !empty($itemData['ImageURL']) ? '<img src="' . $itemData['ImageURL'] . '" alt="Image" width="50">' : 'Няма снимка'; ?></td>
-                <td><?php echo $itemData['Name']; ?></td>
-                <td><?php echo $itemData['Price']." лв."; ?></td>
-                <td><?php echo $itemData['Gender'] === "Men" ? 'Mъж' : 'Жена'; ?></td>
-                <td><?php echo $itemData['Quantity'].' бр.'; ?></td>
-                <td><?php echo $itemData['Size']; ?></td>
-                <td>
-                    <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
-                    <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Сигурни ли сте, че искате да изтриете този продукт?')">Изтрий</a>
-                </td>
-            </tr>
+                <div class="item-card">
+                    <div class="item-image">
+                        <?php if (!empty($itemData['ImageURL'])): ?>
+                            <img src="<?php echo $itemData['ImageURL']; ?>" alt="Image">
+                        <?php else: ?>
+                            <p>Няма снимка</p>
+                        <?php endif; ?>
+                    </div>
+                    <div class="item-details">
+                        <h3><?php echo $itemData['Name']; ?></h3>
+                        <p>Цена: <?php echo $itemData['Price']; ?> лв.</p>
+                        <p>Пол: <?php echo $itemData['Gender']; ?></p>
+                        <p>Наличност: <?php echo $itemData['Quantity']; ?> бр.</p>
+                        <p>Размер: <?php echo $itemData['Size']; ?></p>
+                        <div class="item-actions">
+                            <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
+                            <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Сигурни ли сте, че искате да изтриете този продукт?')">Изтрий</a>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
