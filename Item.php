@@ -10,14 +10,15 @@ class Item {
     public $Quantity;
     public $Size;
     public $ImageURL;
+    public $user_id;
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
-    // Create a new parfum
+    // Create a new item
     public function create() {
-        $query = "INSERT INTO " . $this->table_name . " (Name, Price, Gender, Quantity, Size, ImageURL) VALUES (:Name, :Price, :Gender, :Quantity, :Size, :ImageURL)";
+        $query = "INSERT INTO " . $this->table_name . " (Name, Price, Gender, Quantity, Size, ImageURL, user_id) VALUES (:Name, :Price, :Gender, :Quantity, :Size, :ImageURL, :user_id)";
 
         $stmt = $this->conn->prepare($query);
 
@@ -28,6 +29,7 @@ class Item {
         $this->Quantity = htmlspecialchars(strip_tags($this->Quantity));
         $this->Size = htmlspecialchars(strip_tags($this->Size));
         $this->ImageURL = htmlspecialchars(strip_tags($this->ImageURL));
+        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
 
         // bind values
         $stmt->bindParam(":Name", $this->Name);
@@ -36,6 +38,7 @@ class Item {
         $stmt->bindParam(":Quantity", $this->Quantity);
         $stmt->bindParam(":Size", $this->Size);
         $stmt->bindParam(":ImageURL", $this->ImageURL);
+        $stmt->bindParam(":user_id", $this->user_id);
 
         if ($stmt->execute()) {
             return true;
@@ -44,15 +47,16 @@ class Item {
         return false;
     }
 
-    // Read all parfums
-    public function readAll() {
-        $query = "SELECT * FROM " . $this->table_name;
+    // Read all items for a specific user
+    public function readAllByUser($user_id) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
         $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Read a single parfum by ID
+    // Read a single item by ID
     public function readSingle($id) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE ItemID = :ItemID";
         $stmt = $this->conn->prepare($query);
@@ -61,7 +65,7 @@ class Item {
         return $stmt;
     }
 
-    // Update a parfum
+    // Update an item
     public function update() {
         $query = "UPDATE " . $this->table_name . " 
                   SET Name = :Name, Price = :Price, Gender = :Gender, Quantity = :Quantity, Size = :Size, ImageURL = :ImageURL 
@@ -94,7 +98,7 @@ class Item {
         return false;
     }
 
-    // Delete a parfum
+    // Delete an item
     public function delete($id) {
         $query = "DELETE FROM " . $this->table_name . " WHERE ItemID = :ItemID";
         $stmt = $this->conn->prepare($query);
