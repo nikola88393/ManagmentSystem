@@ -26,8 +26,14 @@ $items = $item->readAllByUser($_SESSION['user_id']);
 </head>
 <body>
     <h1 class="title">Инвентар</h1>
-    <a class="create" href="create.php">Добави</a>
-    <a class="logout" href="auth/logout.php">Logout</a>
+    <div class="index-actions">
+        <a class="create" href="create.php">Добави</a>
+        <div class="user-info">
+            <h3>Здравей, <?php echo $_SESSION['username']; ?>!</h3>
+            <a class="logout" href="auth/logout.php">Изход</a>
+        </div>
+    </div>
+    
     
     <table border="1">
         <thead>
