@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'db/Database.php';
-require_once 'Item.php';
+require_once 'models/Item.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: auth/login.php");

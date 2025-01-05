@@ -1,6 +1,6 @@
 <?php
 require_once 'db/Database.php';
-require_once 'Item.php';
+require_once 'models/Item.php';
 
 $database = new Database();
 $db = $database->getConnection();
