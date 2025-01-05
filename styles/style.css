@@ -43,6 +43,17 @@ button:hover {
     background-color: #005f73;
 }
 
+/* Form styles */
+.form {
+    width: 30%;
+    margin:  auto; 
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 45px;
+    border-radius: 5px;
+    
+}
+
 /* Table Styles */
 table {
     width: 80%;

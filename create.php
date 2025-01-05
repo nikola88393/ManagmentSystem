@@ -56,7 +56,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Създай продукт</title>
-    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
