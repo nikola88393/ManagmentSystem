@@ -51,33 +51,52 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Създай продукт</title>
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <h1 class="title">Създай продукт</h1>
     <form class="form" method="post" enctype="multipart/form-data">
-        <input type="text" name="Name" placeholder="Име" required><br>
-        <input type="number" name="Price" placeholder="Цена" required><br>
-        <select name="Gender" required>
-        <option value="">Избери пол</option>
-            <option value="Men">Мъж</option>
-            <option value="Women">Жена</option>
-        </select><br>
-        <input type="number" name="Quantity" placeholder="Наличност" required><br>
-        <select name="Size" required>
-            <option value="">Размер</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select><br>
-        <input type="file" name="Image"><br>
+        <div>
+            <label for="Name">Име:</label>
+            <input type="text" id="Name" name="Name" required>
+        </div>
+        <div>
+            <label for="Price">Цена:</label>
+            <input type="number" id="Price" name="Price" required>
+        </div>
+        <div>
+            <label for="Gender">Пол:</label>
+            <select id="Gender" name="Gender" required>
+                <option value="">Избери пол</option>
+                <option value="Men">Мъж</option>
+                <option value="Women">Жена</option>
+            </select>
+        </div>
+        <div>
+            <label for="Quantity">Наличност:</label>
+            <input type="number" id="Quantity" name="Quantity" required>
+        </div>
+        <div>
+            <label for="Size">Размер:</label>
+            <select id="Size" name="Size" required>
+                <option value="">Размер</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+        <div>
+            <label for="Image">Снимка:</label>
+            <input type="file" id="Image" name="Image">
+        </div>
         <button type="submit" name="action" value="create">Създай продукт</button>
     </form>
 </body>

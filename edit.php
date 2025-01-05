@@ -47,33 +47,55 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Промени продукт</title>
+    <title>Редактирай продукт</title>
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1 class="title">Промени продукт</h1>
+    <h1 class="title">Редактирай продукт</h1>
     <form class="form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="ItemID" value="<?php echo $itemData['ItemID']; ?>">
-        <input type="text" name="Name" value="<?php echo $itemData['Name']; ?>" required><br>
-        <input type="number" name="Price" value="<?php echo $itemData['Price']; ?>" required><br>
-        <select name="Gender" required>
-            <option value="Men" <?php echo ($itemData['Gender'] == 'Men') ? 'selected' : ''; ?>>Мъж</option>
-            <option value="Women" <?php echo ($itemData['Gender'] == 'Women') ? 'selected' : ''; ?>>Жена</option>
-        </select><br>
-        <input type="number" name="Quantity" value="<?php echo $itemData['Quantity']; ?>" required><br>
-        <select name="Size" required>
-            <option value="XS" <?php echo ($itemData['Size'] == 'XS') ? 'selected' : ''; ?>>XS</option>
-            <option value="S" <?php echo ($itemData['Size'] == 'S') ? 'selected' : ''; ?>>S</option>
-            <option value="M" <?php echo ($itemData['Size'] == 'M') ? 'selected' : ''; ?>>M</option>
-            <option value="L" <?php echo ($itemData['Size'] == 'L') ? 'selected' : ''; ?>>L</option>
-            <option value="XL" <?php echo ($itemData['Size'] == 'XL') ? 'selected' : ''; ?>>XL</option>
-        </select><br>
-        <input type="file" name="Image"><br>
-        <button type="submit" name="action" value="update">Запази</button>
+        <div>
+            <label for="Name">Име:</label>
+            <input type="text" id="Name" name="Name" value="<?php echo $itemData['Name']; ?>" required>
+        </div>
+        <div>
+            <label for="Price">Цена:</label>
+            <input type="number" id="Price" name="Price" value="<?php echo $itemData['Price']; ?>" required>
+        </div>
+        <div>
+            <label for="Gender">Пол:</label>
+            <select id="Gender" name="Gender" required>
+                <option value="Men" <?php if ($itemData['Gender'] == 'Men') echo 'selected'; ?>>Мъж</option>
+                <option value="Women" <?php if ($itemData['Gender'] == 'Women') echo 'selected'; ?>>Жена</option>
+            </select>
+        </div>
+        <div>
+            <label for="Quantity">Наличност:</label>
+            <input type="number" id="Quantity" name="Quantity" value="<?php echo $itemData['Quantity']; ?>" required>
+        </div>
+        <div>
+            <label for="Size">Размер:</label>
+            <select id="Size" name="Size" required>
+                <option value="XS" <?php if ($itemData['Size'] == 'XS') echo 'selected'; ?>>XS</option>
+                <option value="S" <?php if ($itemData['Size'] == 'S') echo 'selected'; ?>>S</option>
+                <option value="M" <?php if ($itemData['Size'] == 'M') echo 'selected'; ?>>M</option>
+                <option value="L" <?php if ($itemData['Size'] == 'L') echo 'selected'; ?>>L</option>
+                <option value="XL" <?php if ($itemData['Size'] == 'XL') echo 'selected'; ?>>XL</option>
+            </select>
+        </div>
+        <div>
+            <label for="Image">Снимка:</label>
+            <input type="file" id="Image" name="Image">
+            <?php if (!empty($itemData['ImageURL'])): ?>
+                <img src="<?php echo $itemData['ImageURL']; ?>" alt="Image" width="100">
+            <?php endif; ?>
+        </div>
+        <button type="submit" name="action" value="update">Актуализирай продукт</button>
     </form>
 </body>
 </html>
