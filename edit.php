@@ -52,8 +52,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Промени продукт</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <h1 class="title">Промени продукт</h1>
