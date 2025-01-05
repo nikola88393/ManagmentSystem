@@ -47,11 +47,17 @@ class Item {
         return false;
     }
 
-    // Read all items for a specific user
-    public function readAllByUser($user_id) {
+    // Read all items for a specific user with optional gender filter
+    public function readAllByUser($user_id, $gender = '') {
         $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
+        if ($gender) {
+            $query .= " AND Gender = :Gender";
+        }
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':user_id', $user_id);
+        if ($gender) {
+            $stmt->bindParam(':Gender', $gender);
+        }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

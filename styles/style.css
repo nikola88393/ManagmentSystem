@@ -96,6 +96,21 @@ form {
     margin: auto;
 }
 
+form.filter-form {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    width: 150px
+}
+
+.item-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+
 input[type="text"], input[type="password"], input[type="number"], select, input[type="file"] {
     width: 100%;
     padding: 10px;
