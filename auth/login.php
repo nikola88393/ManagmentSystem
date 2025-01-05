@@ -18,30 +18,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $user->username;
         header("Location: ../index.php");
     } else {
-        $error_message = "Login failed. Please check your username and password.";
+        $error_message = "Входът не бе успешен. Моля, проверете вашето потребителско име и парола.";
     }
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Вход</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
     <form class="form" method="post">
-        <h2>Login</h2>
+        <h2>Вход</h2>
         <?php if ($error_message): ?>
             <p class="error"><?php echo $error_message; ?></p>
         <?php endif; ?>
-        <label for="username">Username:</label>
+        <label for="username">Потребителско име:</label>
         <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label>
+        <label for="password">Парола:</label>
         <input type="password" id="password" name="password" required><br>
-        <a href="register.php">Register</a>
-        <button type="submit">Login</button>
+        <button type="submit">Вход</button>
+        <a href="register.php">Регистрация</a>
     </form>
 </body>
 </html>
