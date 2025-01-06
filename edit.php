@@ -100,7 +100,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
         </div>
         <div>
             <label for="Image">Снимка:</label>
-            <input type="file" id="Image" name="Image" required>
+            <input type="file" id="Image" name="Image">
             <?php if (!empty($itemData['ImageURL'])): ?>
                 <img src="<?php echo $itemData['ImageURL']; ?>" alt="Image" width="100">
             <?php endif; ?>

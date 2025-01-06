@@ -60,12 +60,8 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                         <h3><?php echo $itemData['Name']; ?></h3>
                         <p>Цена: <?php echo $itemData['Price']; ?> лв.</p>
                         <p>Пол: <?php echo ($itemData['Gender'] == 'Men') ? 'Мъж' : 'Жена'; ?></p>
-                        <p>Наличност (XS): <?php echo ($itemData['Quantity_XS'] > 0) ? $itemData['Quantity_XS'] . ' бр.' : 'Няма'; ?></p>
-                        <p>Наличност (S): <?php echo ($itemData['Quantity_S'] > 0) ? $itemData['Quantity_S'] . ' бр.' : 'Няма'; ?></p>
-                        <p>Наличност (M): <?php echo ($itemData['Quantity_M'] > 0) ? $itemData['Quantity_M'] . ' бр.' : 'Няма'; ?></p>
-                        <p>Наличност (L): <?php echo ($itemData['Quantity_L'] > 0) ? $itemData['Quantity_L'] . ' бр.' : 'Няма'; ?></p>
-                        <p>Наличност (XL): <?php echo ($itemData['Quantity_XL'] > 0) ? $itemData['Quantity_XL'] . ' бр.' : 'Няма'; ?></p>
                         <div class="item-actions">
+                            <a class="view" href="view.php?id=<?php echo $itemData['ItemID']; ?>">Преглед</a>
                             <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
                             <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Сигурни ли сте, че искате да изтриете този продукт?')">Изтрий</a>
                         </div>
