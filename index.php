@@ -70,5 +70,7 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+    <?php include 'footer.php'; ?>    
+
 </body>
 </html>

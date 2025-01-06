@@ -107,5 +107,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
         </div>
         <button type="submit" name="action" value="create">Създай продукт</button>
     </form>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

@@ -107,5 +107,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
         </div>
         <button type="submit" name="action" value="update">Актуализирай продукт</button>
     </form>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

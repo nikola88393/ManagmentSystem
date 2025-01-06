@@ -53,5 +53,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

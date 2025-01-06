@@ -227,6 +227,7 @@ form {
     width: 100%;
     max-width: 400px;
     margin: auto;
+    margin-bottom: 20px;
     @media screen and (max-width: 568px) {
         max-width: 300px;
         
@@ -411,4 +412,37 @@ a {
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+header .container, footer .container {
+    /* margin: 0; */
+    padding: 6px;
 }
