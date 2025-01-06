@@ -17,8 +17,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     $item->Name = $_POST['Name'];
     $item->Price = $_POST['Price'];
     $item->Gender = $_POST['Gender'];
-    $item->Quantity = $_POST['Quantity'];
-    $item->Size = $_POST['Size'];
+    $item->Quantity_XS = $_POST['Quantity_XS'];
+    $item->Quantity_S = $_POST['Quantity_S'];
+    $item->Quantity_M = $_POST['Quantity_M'];
+    $item->Quantity_L = $_POST['Quantity_L'];
+    $item->Quantity_XL = $_POST['Quantity_XL'];
     $item->user_id = $_SESSION['user_id'];
 
     // Handle image upload
@@ -79,23 +82,28 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
             </select>
         </div>
         <div>
-            <label for="Quantity">Наличност:</label>
-            <input type="number" id="Quantity" name="Quantity" required>
+            <label for="Quantity_XS">Наличност (XS):</label>
+            <input type="number" id="Quantity_XS" name="Quantity_XS" required>
         </div>
         <div>
-            <label for="Size">Размер:</label>
-            <select id="Size" name="Size" required>
-                <option value="">Размер</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-            </select>
+            <label for="Quantity_S">Наличност (S):</label>
+            <input type="number" id="Quantity_S" name="Quantity_S" required>
+        </div>
+        <div>
+            <label for="Quantity_M">Наличност (M):</label>
+            <input type="number" id="Quantity_M" name="Quantity_M" required>
+        </div>
+        <div>
+            <label for="Quantity_L">Наличност (L):</label>
+            <input type="number" id="Quantity_L" name="Quantity_L" required>
+        </div>
+        <div>
+            <label for="Quantity_XL">Наличност (XL):</label>
+            <input type="number" id="Quantity_XL" name="Quantity_XL" required>
         </div>
         <div>
             <label for="Image">Снимка:</label>
-            <input type="file" id="Image" name="Image">
+            <input type="file" id="Image" name="Image" required>
         </div>
         <button type="submit" name="action" value="create">Създай продукт</button>
     </form>

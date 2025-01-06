@@ -22,8 +22,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
     $item->Name = $_POST['Name'];
     $item->Price = $_POST['Price'];
     $item->Gender = $_POST['Gender'];
-    $item->Quantity = $_POST['Quantity'];
-    $item->Size = $_POST['Size'];
+    $item->Quantity_XS = $_POST['Quantity_XS'];
+    $item->Quantity_S = $_POST['Quantity_S'];
+    $item->Quantity_M = $_POST['Quantity_M'];
+    $item->Quantity_L = $_POST['Quantity_L'];
+    $item->Quantity_XL = $_POST['Quantity_XL'];
     $item->ItemID = $_POST['ItemID'];
 
     if (isset($_FILES['Image']) && $_FILES['Image']['error'] == 0) {
@@ -76,22 +79,28 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
             </select>
         </div>
         <div>
-            <label for="Quantity">Наличност:</label>
-            <input type="number" id="Quantity" name="Quantity" value="<?php echo $itemData['Quantity']; ?>" required>
+            <label for="Quantity_XS">Наличност (XS):</label>
+            <input type="number" id="Quantity_XS" name="Quantity_XS" value="<?php echo $itemData['Quantity_XS']; ?>" required>
         </div>
         <div>
-            <label for="Size">Размер:</label>
-            <select id="Size" name="Size" required>
-                <option value="XS" <?php if ($itemData['Size'] == 'XS') echo 'selected'; ?>>XS</option>
-                <option value="S" <?php if ($itemData['Size'] == 'S') echo 'selected'; ?>>S</option>
-                <option value="M" <?php if ($itemData['Size'] == 'M') echo 'selected'; ?>>M</option>
-                <option value="L" <?php if ($itemData['Size'] == 'L') echo 'selected'; ?>>L</option>
-                <option value="XL" <?php if ($itemData['Size'] == 'XL') echo 'selected'; ?>>XL</option>
-            </select>
+            <label for="Quantity_S">Наличност (S):</label>
+            <input type="number" id="Quantity_S" name="Quantity_S" value="<?php echo $itemData['Quantity_S']; ?>" required>
+        </div>
+        <div>
+            <label for="Quantity_M">Наличност (M):</label>
+            <input type="number" id="Quantity_M" name="Quantity_M" value="<?php echo $itemData['Quantity_M']; ?>" required>
+        </div>
+        <div>
+            <label for="Quantity_L">Наличност (L):</label>
+            <input type="number" id="Quantity_L" name="Quantity_L" value="<?php echo $itemData['Quantity_L']; ?>" required>
+        </div>
+        <div>
+            <label for="Quantity_XL">Наличност (XL):</label>
+            <input type="number" id="Quantity_XL" name="Quantity_XL" value="<?php echo $itemData['Quantity_XL']; ?>" required>
         </div>
         <div>
             <label for="Image">Снимка:</label>
-            <input type="file" id="Image" name="Image">
+            <input type="file" id="Image" name="Image" required>
             <?php if (!empty($itemData['ImageURL'])): ?>
                 <img src="<?php echo $itemData['ImageURL']; ?>" alt="Image" width="100">
             <?php endif; ?>

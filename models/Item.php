@@ -7,8 +7,11 @@ class Item {
     public $Name;
     public $Price;
     public $Gender;
-    public $Quantity;
-    public $Size;
+    public $Quantity_XS;
+    public $Quantity_S;
+    public $Quantity_M;
+    public $Quantity_L;
+    public $Quantity_XL;
     public $ImageURL;
     public $user_id;
 
@@ -18,7 +21,7 @@ class Item {
 
     // Create a new item
     public function create() {
-        $query = "INSERT INTO " . $this->table_name . " (Name, Price, Gender, Quantity, Size, ImageURL, user_id) VALUES (:Name, :Price, :Gender, :Quantity, :Size, :ImageURL, :user_id)";
+        $query = "INSERT INTO " . $this->table_name . " (Name, Price, Gender, Quantity_XS, Quantity_S, Quantity_M, Quantity_L, Quantity_XL, ImageURL, user_id) VALUES (:Name, :Price, :Gender, :Quantity_XS, :Quantity_S, :Quantity_M, :Quantity_L, :Quantity_XL, :ImageURL, :user_id)";
 
         $stmt = $this->conn->prepare($query);
 
@@ -26,8 +29,11 @@ class Item {
         $this->Name = htmlspecialchars(strip_tags($this->Name));
         $this->Price = htmlspecialchars(strip_tags($this->Price));
         $this->Gender = htmlspecialchars(strip_tags($this->Gender));
-        $this->Quantity = htmlspecialchars(strip_tags($this->Quantity));
-        $this->Size = htmlspecialchars(strip_tags($this->Size));
+        $this->Quantity_XS = htmlspecialchars(strip_tags($this->Quantity_XS));
+        $this->Quantity_S = htmlspecialchars(strip_tags($this->Quantity_S));
+        $this->Quantity_M = htmlspecialchars(strip_tags($this->Quantity_M));
+        $this->Quantity_L = htmlspecialchars(strip_tags($this->Quantity_L));
+        $this->Quantity_XL = htmlspecialchars(strip_tags($this->Quantity_XL));
         $this->ImageURL = htmlspecialchars(strip_tags($this->ImageURL));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
 
@@ -35,8 +41,11 @@ class Item {
         $stmt->bindParam(":Name", $this->Name);
         $stmt->bindParam(":Price", $this->Price);
         $stmt->bindParam(":Gender", $this->Gender);
-        $stmt->bindParam(":Quantity", $this->Quantity);
-        $stmt->bindParam(":Size", $this->Size);
+        $stmt->bindParam(":Quantity_XS", $this->Quantity_XS);
+        $stmt->bindParam(":Quantity_S", $this->Quantity_S);
+        $stmt->bindParam(":Quantity_M", $this->Quantity_M);
+        $stmt->bindParam(":Quantity_L", $this->Quantity_L);
+        $stmt->bindParam(":Quantity_XL", $this->Quantity_XL);
         $stmt->bindParam(":ImageURL", $this->ImageURL);
         $stmt->bindParam(":user_id", $this->user_id);
 
@@ -74,7 +83,7 @@ class Item {
     // Update an item
     public function update() {
         $query = "UPDATE " . $this->table_name . " 
-                  SET Name = :Name, Price = :Price, Gender = :Gender, Quantity = :Quantity, Size = :Size, ImageURL = :ImageURL 
+                  SET Name = :Name, Price = :Price, Gender = :Gender, Quantity_XS = :Quantity_XS, Quantity_S = :Quantity_S, Quantity_M = :Quantity_M, Quantity_L = :Quantity_L, Quantity_XL = :Quantity_XL, ImageURL = :ImageURL 
                   WHERE ItemID = :ItemID";
     
         $stmt = $this->conn->prepare($query);
@@ -83,8 +92,11 @@ class Item {
         $this->Name = htmlspecialchars(strip_tags($this->Name));
         $this->Price = htmlspecialchars(strip_tags($this->Price));
         $this->Gender = htmlspecialchars(strip_tags($this->Gender));
-        $this->Quantity = htmlspecialchars(strip_tags($this->Quantity));
-        $this->Size = htmlspecialchars(strip_tags($this->Size));
+        $this->Quantity_XS = htmlspecialchars(strip_tags($this->Quantity_XS));
+        $this->Quantity_S = htmlspecialchars(strip_tags($this->Quantity_S));
+        $this->Quantity_M = htmlspecialchars(strip_tags($this->Quantity_M));
+        $this->Quantity_L = htmlspecialchars(strip_tags($this->Quantity_L));
+        $this->Quantity_XL = htmlspecialchars(strip_tags($this->Quantity_XL));
         $this->ImageURL = htmlspecialchars(strip_tags($this->ImageURL));
         $this->ItemID = htmlspecialchars(strip_tags($this->ItemID));
     
@@ -92,8 +104,11 @@ class Item {
         $stmt->bindParam(":Name", $this->Name);
         $stmt->bindParam(":Price", $this->Price);
         $stmt->bindParam(":Gender", $this->Gender);
-        $stmt->bindParam(":Quantity", $this->Quantity);
-        $stmt->bindParam(":Size", $this->Size);
+        $stmt->bindParam(":Quantity_XS", $this->Quantity_XS);
+        $stmt->bindParam(":Quantity_S", $this->Quantity_S);
+        $stmt->bindParam(":Quantity_M", $this->Quantity_M);
+        $stmt->bindParam(":Quantity_L", $this->Quantity_L);
+        $stmt->bindParam(":Quantity_XL", $this->Quantity_XL);
         $stmt->bindParam(":ImageURL", $this->ImageURL);
         $stmt->bindParam(":ItemID", $this->ItemID);
     

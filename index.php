@@ -27,8 +27,9 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <!-- <h1 class="title">Инвентар</h1> -->
     <?php include 'header.php'; ?>
+    
+    <div class="index-actions">
         <div class="item-options"> 
             <a class="create" href="create.php">Добави</a>
             <form method="get" class="filter-form">
@@ -40,6 +41,7 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                 </select>
             </form>
         </div>
+    </div>
 
     <div class="items-container">
         <?php if (empty($items)): ?>
@@ -57,9 +59,12 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                     <div class="item-details">
                         <h3><?php echo $itemData['Name']; ?></h3>
                         <p>Цена: <?php echo $itemData['Price']; ?> лв.</p>
-                        <p>Пол: <?php echo $itemData['Gender']; ?></p>
-                        <p>Наличност: <?php echo $itemData['Quantity']; ?> бр.</p>
-                        <p>Размер: <?php echo $itemData['Size']; ?></p>
+                        <p>Пол: <?php echo ($itemData['Gender'] == 'Men') ? 'Мъж' : 'Жена'; ?></p>
+                        <p>Наличност (XS): <?php echo ($itemData['Quantity_XS'] > 0) ? $itemData['Quantity_XS'] . ' бр.' : 'Няма'; ?></p>
+                        <p>Наличност (S): <?php echo ($itemData['Quantity_S'] > 0) ? $itemData['Quantity_S'] . ' бр.' : 'Няма'; ?></p>
+                        <p>Наличност (M): <?php echo ($itemData['Quantity_M'] > 0) ? $itemData['Quantity_M'] . ' бр.' : 'Няма'; ?></p>
+                        <p>Наличност (L): <?php echo ($itemData['Quantity_L'] > 0) ? $itemData['Quantity_L'] . ' бр.' : 'Няма'; ?></p>
+                        <p>Наличност (XL): <?php echo ($itemData['Quantity_XL'] > 0) ? $itemData['Quantity_XL'] . ' бр.' : 'Няма'; ?></p>
                         <div class="item-actions">
                             <a class="edit" href="edit.php?id=<?php echo $itemData['ItemID']; ?>">Промени</a>
                             <a class="delete" href="delete.php?id=<?php echo $itemData['ItemID']; ?>" onclick="return confirm('Сигурни ли сте, че искате да изтриете този продукт?')">Изтрий</a>

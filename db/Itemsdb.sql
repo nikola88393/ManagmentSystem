@@ -3,9 +3,13 @@ CREATE TABLE items (
     Name VARCHAR(255) NOT NULL,
     Price DECIMAL(10, 2) NOT NULL,
     Gender ENUM('Men', 'Women') NOT NULL,
-    Size ENUM('XS', 'S', 'M', 'L', 'XL') NOT NULL,
-    Quantity INT NOT NULL,
-    ImageURL VARCHAR(255) DEFAULT NULL
+    Quantity_XS INT DEFAULT 0,
+    Quantity_S INT DEFAULT 0,
+    Quantity_M INT DEFAULT 0,
+    Quantity_L INT DEFAULT 0,
+    Quantity_XL INT DEFAULT 0,
+    ImageURL VARCHAR(255) DEFAULT NULL,
+    user_id INT NOT NULL
 );
 
 CREATE TABLE users (
@@ -13,5 +17,3 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
-
-ALTER TABLE items ADD COLUMN user_id INT NOT NULL;
