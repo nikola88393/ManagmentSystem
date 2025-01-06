@@ -13,9 +13,10 @@ $db = $database->getConnection();
 $item = new Item($db);
 
 $gender_filter = isset($_GET['gender']) ? $_GET['gender'] : '';
+$search_query = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Fetch all items for the logged-in user with optional gender filter
-$items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
+// Fetch all items for the logged-in user with optional gender filter and search query
+$items = $item->readAllByUser($_SESSION['user_id'], $gender_filter, $search_query);
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +29,12 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
 </head>
 <body>
     <?php include 'header.php'; ?>
+    <div class="search-form-container">
+    <form method="get" class="search-form">
+                <input type="text" name="search" placeholder="Търсене на продукт" value="<?php echo htmlspecialchars($search_query); ?>">
+                <button type="submit">Търсене</button>
+            </form>
+    </div>
     
     <div class="index-actions">
         <div class="item-options"> 
@@ -40,7 +47,9 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                     <option value="Women" <?php if ($gender_filter == 'Women') echo 'selected'; ?>>Жена</option>
                 </select>
             </form>
+           
         </div>
+
     </div>
 
     <div class="items-container">
@@ -70,7 +79,7 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <?php include 'footer.php'; ?>    
 
+    <?php include 'footer.php'; ?>
 </body>
 </html>
