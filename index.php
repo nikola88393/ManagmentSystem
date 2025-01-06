@@ -27,8 +27,8 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1 class="title">Инвентар</h1>
-    <div class="index-actions">
+    <!-- <h1 class="title">Инвентар</h1> -->
+    <?php include 'header.php'; ?>
         <div class="item-options"> 
             <a class="create" href="create.php">Добави</a>
             <form method="get" class="filter-form">
@@ -40,11 +40,6 @@ $items = $item->readAllByUser($_SESSION['user_id'], $gender_filter);
                 </select>
             </form>
         </div>
-        <div class="user-info">
-            <h3>Здравей, <?php echo $_SESSION['username']; ?>!</h3>
-            <a class="logout" href="auth/logout.php">Изход</a>
-        </div>
-    </div>
 
     <div class="items-container">
         <?php if (empty($items)): ?>

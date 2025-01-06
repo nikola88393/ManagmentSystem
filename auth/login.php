@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
+    <?php include '../header.php'; ?>
     <form class="form" method="post">
         <h2>Вход</h2>
         <?php if ($error_message): ?>

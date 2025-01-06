@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'db/Database.php';
 require_once 'models/Item.php';
 
@@ -56,7 +57,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1 class="title">Редактирай продукт</h1>
+    <?php include 'header.php'; ?>
     <form class="form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="ItemID" value="<?php echo $itemData['ItemID']; ?>">
         <div>

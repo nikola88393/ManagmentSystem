@@ -60,7 +60,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <h1 class="title">Създай продукт</h1>
+    <?php include 'header.php'; ?>
     <form class="form" method="post" enctype="multipart/form-data">
         <div>
             <label for="Name">Име:</label>
