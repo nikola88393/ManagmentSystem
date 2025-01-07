@@ -41,6 +41,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <h2><?php echo $itemData['Name']; ?></h2>
                 <p>Цена: <?php echo $itemData['Price']; ?> лв.</p>
                 <p>Пол: <?php echo ($itemData['Gender'] == 'Men') ? 'Мъж' : 'Жена'; ?></p>
+                <p>Категория: <?php echo $itemData['CategoryName']; ?></p>
                 <p>Наличност (XS): <?php echo ($itemData['Quantity_XS'] > 0) ? $itemData['Quantity_XS'] . ' бр.' : 'Няма'; ?></p>
                 <p>Наличност (S): <?php echo ($itemData['Quantity_S'] > 0) ? $itemData['Quantity_S'] . ' бр.' : 'Няма'; ?></p>
                 <p>Наличност (M): <?php echo ($itemData['Quantity_M'] > 0) ? $itemData['Quantity_M'] . ' бр.' : 'Няма'; ?></p>

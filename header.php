@@ -9,7 +9,7 @@
 <body>
     <header class="main-header">
         <div class="container">
-            <h1>Инвентар</h1>
+            <a href="index.php"><h1>Инвентар</h1></a>
                 <?php if (isset($_SESSION['username'])): ?>
                     <div class="user-info">
                     <h3>Здравей, <?php echo $_SESSION['username']; ?>!</h3>

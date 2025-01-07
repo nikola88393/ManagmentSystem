@@ -494,3 +494,19 @@ form.search-form {
 .search-form button:hover {
     background-color: #0056b3;
 }
+
+.categories-list ul{
+    list-style-type: none;
+}
+.categories-list ul li {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: 16px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

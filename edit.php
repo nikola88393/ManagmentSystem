@@ -17,6 +17,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     exit;
 }
 
+// Fetch categories
+$query = "SELECT * FROM categories";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 // Handle form submission for update
 if (isset($_POST['action']) && $_POST['action'] == 'update') {
     $item->Name = $_POST['Name'];
@@ -27,6 +33,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
     $item->Quantity_M = $_POST['Quantity_M'];
     $item->Quantity_L = $_POST['Quantity_L'];
     $item->Quantity_XL = $_POST['Quantity_XL'];
+    $item->CategoryID = $_POST['CategoryID'];
     $item->ItemID = $_POST['ItemID'];
 
     if (isset($_FILES['Image']) && $_FILES['Image']['error'] == 0) {
@@ -99,6 +106,15 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
             <input type="number" id="Quantity_XL" name="Quantity_XL" value="<?php echo $itemData['Quantity_XL']; ?>" required>
         </div>
         <div>
+            <label for="CategoryID">Категория:</label>
+            <select id="CategoryID" name="CategoryID" required>
+                <option value="">Избери категория</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category['CategoryID']; ?>" <?php if ($itemData['CategoryID'] == $category['CategoryID']) echo 'selected'; ?>><?php echo $category['Name']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
             <label for="Image">Снимка:</label>
             <input type="file" id="Image" name="Image">
             <?php if (!empty($itemData['ImageURL'])): ?>
@@ -107,6 +123,5 @@ if (isset($_POST['action']) && $_POST['action'] == 'update') {
         </div>
         <button type="submit" name="action" value="update">Актуализирай продукт</button>
     </form>
-    <?php include 'footer.php'; ?>
 </body>
 </html>

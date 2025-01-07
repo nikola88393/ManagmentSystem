@@ -17,3 +17,12 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE categories (
+    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE items
+ADD COLUMN CategoryID INT,
+ADD FOREIGN KEY (CategoryID) REFERENCES categories(CategoryID);

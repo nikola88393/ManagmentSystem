@@ -12,6 +12,12 @@ $database = new Database();
 $db = $database->getConnection();
 $item = new Item($db);
 
+// Fetch categories
+$query = "SELECT * FROM categories";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 // Handle form submission
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     $item->Name = $_POST['Name'];
@@ -22,6 +28,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
     $item->Quantity_M = $_POST['Quantity_M'];
     $item->Quantity_L = $_POST['Quantity_L'];
     $item->Quantity_XL = $_POST['Quantity_XL'];
+    $item->CategoryID = $_POST['CategoryID'];
     $item->user_id = $_SESSION['user_id'];
 
     // Handle image upload
@@ -102,8 +109,17 @@ if (isset($_POST['action']) && $_POST['action'] == 'create') {
             <input type="number" id="Quantity_XL" name="Quantity_XL" required>
         </div>
         <div>
+            <label for="CategoryID">Категория:</label>
+            <select id="CategoryID" name="CategoryID" required>
+                <option value="">Избери категория</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?php echo $category['CategoryID']; ?>"><?php echo $category['Name']; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div>
             <label for="Image">Снимка:</label>
-            <input type="file" id="Image" name="Image" required>
+            <input type="file" id="Image" name="Image">
         </div>
         <button type="submit" name="action" value="create">Създай продукт</button>
     </form>
